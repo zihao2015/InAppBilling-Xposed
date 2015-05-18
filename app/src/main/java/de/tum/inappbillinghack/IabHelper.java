@@ -1,4 +1,4 @@
-package inappbillinghack.tum.de.workshop;
+package de.tum.inappbillinghack;
 
 /**
  * Created by m.hesse on 14.05.2015.
@@ -44,4 +44,5 @@ public class IabHelper {
     // some fields on the getSkuDetails response bundle
     public static final String GET_SKU_DETAILS_ITEM_LIST = "ITEM_ID_LIST";
     public static final String GET_SKU_DETAILS_ITEM_TYPE_LIST = "ITEM_TYPE_LIST";
+    public static final String INAPP_DATA_SIGNATURE = "INAPP_DATA_SIGNATURE";
 }

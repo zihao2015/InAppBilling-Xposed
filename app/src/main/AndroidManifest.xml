@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="inappbillinghack.tum.de.workshop" >
+    package="de.tum.inappbillinghack" >
 
     <application
         android:allowBackup="true"
@@ -20,7 +20,7 @@
         <activity
             android:name=".BuyIntent">
             <intent-filter>
-                <action android:name="inappbillinghack.tum.de.workshop.buyhack" />
+                <action android:name="de.tum.inappbillinghack.buyintent" />
             </intent-filter>
         </activity>
     </application>
