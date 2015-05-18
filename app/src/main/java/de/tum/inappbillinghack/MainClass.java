@@ -11,6 +11,8 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
 import org.apache.commons.lang3.ClassUtils;
 
+import java.util.Calendar;
+
 import static de.robv.android.xposed.XposedHelpers.*;
 
 
@@ -20,9 +22,25 @@ public class MainClass implements IXposedHookLoadPackage {
             findAndHookMethod("com.android.systemui.statusbar.policy.Clock", lpparam.classLoader, "updateClock", new XC_MethodHook() {
                 @Override
                 protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                    TextView tv = (TextView) param.thisObject;
+                    final TextView tv = (TextView) param.thisObject;
                     //tv.setText(new StringBuilder(tv.getText().toString()).reverse().toString());
-                    tv.setRotation(((System.currentTimeMillis()/100000)%8)*45);
+                    //tv.setRotation(((System.currentTimeMillis()/100000)%8)*45);
+
+                    /*new Thread() {
+                        private int count = 0;
+                        @Override
+                        public void run() {
+                            while (count < 120) {
+                                tv.setRotation(count * 3);
+                                try {
+                                    Thread.sleep(500);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                                count++;
+                            }
+                        }
+                    }.start();*/
                 }
             });
         } else {
@@ -32,7 +50,6 @@ public class MainClass implements IXposedHookLoadPackage {
 
                 findAndHookMethod("com.android.vending.billing.IInAppBillingService.Stub", lpparam.classLoader,
                         "onTransact", int.class, Parcel.class, Parcel.class, int.class, new GetBuyIntentHook());
-
             } catch(ClassNotFoundException e) {}
         }
     }

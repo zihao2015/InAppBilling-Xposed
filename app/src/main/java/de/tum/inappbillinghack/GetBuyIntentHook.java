@@ -55,14 +55,14 @@ public class GetBuyIntentHook extends XC_MethodHook {
             parcel.readInt();
 
             String packageName = parcel.readString();
-            Context c = new MyShittyContext(packageName);
+            Context c = new MyShittyContext("");
             XposedBridge.log("context package: " + c.getPackageName());
 
             // create our own intent
             Intent intent = new Intent();
             intent.setClass(c, BuyIntent.class);
             intent.setAction(BuyIntent.BUY_INTENT);
-            intent.putExtra(BuyIntent.EXTRA_PACKAGENAME, parcel.readString());
+            intent.putExtra(BuyIntent.EXTRA_PACKAGENAME, packageName);
             intent.putExtra(BuyIntent.EXTRA_PRODUCT_ID, parcel.readString());
             intent.putExtra(BuyIntent.EXTRA_DEV_PAYLOAD, parcel.readString());
 
