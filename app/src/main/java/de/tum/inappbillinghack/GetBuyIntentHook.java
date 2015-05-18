@@ -24,7 +24,7 @@ public class GetBuyIntentHook extends XC_MethodHook {
         intent.setAction(BuyIntent.BUY_INTENT);
         intent.putExtra(BuyIntent.EXTRA_PACKAGENAME, (String) param.args[1]);
         intent.putExtra(BuyIntent.EXTRA_PRODUCT_ID, (String) param.args[2]);
-        intent.putExtra(BuyIntent.EXTRA_DEV_PAYLOAD,(String) param.args[4]);
+        intent.putExtra(BuyIntent.EXTRA_DEV_PAYLOAD, (String) param.args[4]);
 
         bundle.putParcelable(IabHelper.RESPONSE_BUY_INTENT, PendingIntent.getActivity(c, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT));
 
